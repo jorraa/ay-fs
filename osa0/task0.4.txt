@@ -1,0 +1,23 @@
+selain -> palvelin  https://fullstack-exampleapp.herokuapp.com/new_note
+selain lähettää POST:lla tekstikenttään annetun tekstin
+
+palvelin -> selain Paluun HTML-koodina tulee "notes"
+Jatko on kuin mallissa, jonka kopion alle keksimättä sanamuotoja uusiksi
+
+selain->palvelin: HTTP GET https://fullstack-exampleapp.herokuapp.com/main.css
+palvelin-->selain: main.css
+selain->palvelin: HTTP GET https://fullstack-exampleapp.herokuapp.com/main.js
+palvelin-->selain: main.js
+
+note over selain:
+selain alkaa suorittaa js-koodia
+joka pyytää JSON-datan palvelimelta
+end note
+
+selain->palvelin: HTTP GET https://fullstack-exampleapp.herokuapp.com/data.json
+palvelin-->selain: [{ content: "HTML on helppoa", date: "2019-01-01" }, ...]
+
+note over selain:
+selain suorittaa tapahtumankäsittelijän
+joka renderöi muistiinpanot näytölle
+end note
