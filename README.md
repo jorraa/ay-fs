@@ -1,3 +1,3 @@
-# ay-fs
+# fs
 Fullstack-kurssi
 Collaborator mluukkai
