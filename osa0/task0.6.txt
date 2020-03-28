@@ -1,0 +1,8 @@
+
+note over selain:
+selaimen "formille" määritelty submit-toiminta, joka lukee noten tiedot,
+lisää notes-listaan ja lähettää serverille application/json tyyppisenä POSTina.
+end note
+
+selain -> palvelin  https://fullstack-exampleapp.herokuapp.com/new_note_spa
+palvelin-->selain: Ilmoitus, että uusi "note" luotu
