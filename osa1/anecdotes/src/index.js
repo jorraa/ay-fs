@@ -52,7 +52,8 @@ const App = (props) => {
       <h1>Anecdote with most votes</h1>
       <MostVotedAnecdote 
           anecdote={props.anecdotes[findMostVoted()]}
-          //feels a bit odd to find max here and in prev function, but let it go
+          //feels a bit odd to find max here and 
+          //in prev function, but let it go
           votes={Math.max(...points)}
       />
       }
