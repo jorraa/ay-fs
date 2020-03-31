@@ -1,32 +1,38 @@
 import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 
-
 const Button = ({handleClick, text}) => (
   <button onClick={handleClick}>
     {text}
   </button>
 )
 
-const App = (props) => {
-  const [selected, setSelected] = useState(0)
-  const [votes, setVotes] = useState(0)
+const Anecdote = ({anecdote, votes}) => (
+  <>
+    <p>{anecdote}</p>
+    <p>has {votes} votes</p>
+  </>
+)
 
-  
-  const checkBest = () => {
-    console.log("points", points)
-    const mostVotes = Math.max(...points)
-    console.log("mostVotes", mostVotes)
-    const isBest = (element) => element === mostVotes;
-    const best = points.findIndex(isBest)
-    console.log("best", best)
-    return best
+const MostVotedAnecdote = ({anecdote, votes}) => {
+  if(votes === 0){
+    return <p>No votes given yet. Be the first one to vote if you like this anecdote!</p>
   }
-  const getRandomInt = (min, max) => {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
+  return <Anecdote anecdote={anecdote} votes={votes}/>
+}
+
+const findMostVoted = () => 
+  points.findIndex((elem) => elem === Math.max(...points))
+
+const getRandomInt = (min, max) => {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+const App = (props) => {
+  const [selected, setSelected] = useState(getRandomInt(0, anecdotes.length-1))
+  const [votes, setVotes] = useState(0)
 
   const chooseNextAnecdote = () => setSelected(getRandomInt(0, anecdotes.length-1))
 
@@ -35,14 +41,21 @@ const App = (props) => {
     points[selected] += 1
     setVotes(votes + 1)
   }
-  checkBest()
-  chooseNextAnecdote()
   return (
     <div>
-      <p>{props.anecdotes[selected]}</p>
-      <p>has {points[selected]} votes</p>
+      <h1>Anecdote of the day</h1>
+      <Anecdote anecdote={props.anecdotes[selected]} votes={points[selected]}/>
+
       <Button handleClick={voteAnecdote} text="vote"/>
       <Button handleClick={chooseNextAnecdote} text="next anecdote"/>
+
+      <h1>Anecdote with most votes</h1>
+      <MostVotedAnecdote 
+          anecdote={props.anecdotes[findMostVoted()]}
+          //feels a bit odd to find max here and in prev function, but let it go
+          votes={Math.max(...points)}
+      />
+      }
     </div>
   )
 }
@@ -57,7 +70,6 @@ const anecdotes = [
 ]
 
 let points = new Array(anecdotes.length).fill(0)
-  console.log("points", points)
 
 ReactDOM.render(
   <App anecdotes={anecdotes} points={points}/>,

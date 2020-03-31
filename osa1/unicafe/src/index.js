@@ -7,20 +7,6 @@ const Button = ({handleClick, text}) => (
   </button>
 )
 const Header = ({text}) => (<h1>{text}</h1>)
-
-/*
-const Feedback = ({feedbacks}) => {
-  return (
-  <div>
-    <Header text = {feedbacks.title}/>
-    <Button handleClick={feedbacks.increaseGoodByOne} text={feedbacks.good.text}/>      
-    <Button handleClick={feedbacks.increaseNeutralByOne} text={feedbacks.neutral.text}/>          
-    <Button handleClick={feedbacks.increaseBadByOne}text={feedbacks.bad.text}/>
-  </div>
-  )
-} 
-*/
-
 const StatisticsLine = ({text, value}) => <tr><td>{text}</td><td>{value}</td></tr>
 
 
@@ -63,17 +49,17 @@ const App = () => {
   const feedbacks = {
     title: "give feedback",
     good: {
-      text: "good",
-      handleClick: {increaseGoodByOne}
+      text: "good"
+      //handleClick: {increaseGoodByOne}
       // no success yet for handle through props
     },
     neutral: {
       text: "neutral",
-      handleClick: {increaseNeutralByOne}
+      //handleClick: {increaseNeutralByOne}
     },
     bad: {
-      text: "bad",
-      handleClick: {increaseBadByOne}
+      text: "bad"
+      //handleClick: {increaseBadByOne}
     }
   }
   
