@@ -16,6 +16,8 @@ const Part = (props) => {
 }
 
 const Content = (props) => {
+  // Tajusin 3 "partin" vakion vasta löydettyäni map-ratkaisun
+  // jätin näin
   return (
     <>
         {props.parts.map((value, i) => {
